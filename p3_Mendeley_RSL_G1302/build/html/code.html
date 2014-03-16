@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation for the Code &mdash; Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation" href="index.html" />
+    <link rel="prev" title="Auswertung" href="auswertung.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="auswertung.html" title="Auswertung"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documentation-for-the-code">
+<h1>Documentation for the Code<a class="headerlink" href="#documentation-for-the-code" title="Permalink to this headline">¶</a></h1>
+<p>All the source code are in the super_rsl package.</p>
+<span class="target" id="module-super_rsl"></span><div class="section" id="super-rsl-test-module">
+<h2>super_rsl.test module<a class="headerlink" href="#super-rsl-test-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="super-rsl-datadownloader-module">
+<h2>super_rsl.datadownloader module<a class="headerlink" href="#super-rsl-datadownloader-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-super_rsl.datadownloader"></span><dl class="function">
+<dt id="super_rsl.datadownloader.authorsPapers">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">authorsPapers</tt><big>(</big><em>mendeley</em>, <em>author='Wolfgang G. Stock'</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.authorsPapers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search all papars for a given author&#8217;s name</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mendeley</strong> (<em>mendeley_client.MendeleyClient</em>) &#8211; A mendeley client instance</li>
+<li><strong>author</strong> (<em>String</em>) &#8211; A author name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a List of objects</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.categoriesList">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">categoriesList</tt><big>(</big><em>mendeley</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.categoriesList" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function downloads the result that mendeley.categoreis()     returns.
+Then store this result in order this categorie id into a list of     tuple.
+Like [(catid, catname, catslug)]. We do this, because it is     convinient to checkt
+the catid in anothers functions. :)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mendeley</strong> (<em>mendeley_client.MendeleyClient</em>) &#8211; A mendeley client instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A list of categories</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.computeFreq">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">computeFreq</tt><big>(</big><em>resultDict</em>, <em>inputList</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.computeFreq" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to compute freq</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resultDict</strong> (<em>Dict</em>) &#8211; A input Dict</li>
+<li><strong>inputList</strong> (<em>A List</em>) &#8211; A input List</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.papersInMag">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">papersInMag</tt><big>(</big><em>mendeley</em>, <em>mag='Nature'</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.papersInMag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search for a given mag, then collect papers in this mag.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Due the limit of this API max 500 / hour.         This funktion collects infomations <strong>only</strong>         in the fist 100 pages. 
+Or onle collects max 500 results.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mendeley</strong> (<em>mendeley_client.MendeleyClient</em>) &#8211; A mendeley client instance</li>
+<li><strong>topn</strong> (<em>A Interger</em>) &#8211; A Interger indicate ranking item</li>
+<li><strong>mag</strong> (<em>A string</em>) &#8211; A magzine name or a publication name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a list of tuple (uuid, title, year, url,     publication_outlet)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.papersInYears">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">papersInYears</tt><big>(</big><em>mendeley</em>, <em>fromyear=2013</em>, <em>toyear=2013</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.papersInYears" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the year&#8217;s account for a given timespace.
+Then store this information as a list of tuples.</p>
+<p>Use mendeley.search(&#8220;year:YEAR&#8221;)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mendeley</strong> (<em>mendeley_client.MendeleyClient</em>) &#8211; A mendeley client instance</li>
+<li><strong>fromyear</strong> (<em>A four digit integer</em>) &#8211; The year for start counting</li>
+<li><strong>toyear</strong> (<em>A four digit integer</em>) &#8211; The end year for counting</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a List of tuple, (year:count)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.popPaperInMag">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">popPaperInMag</tt><big>(</big><em>mendeley</em>, <em>paperList</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.popPaperInMag" title="Permalink to this definition">¶</a></dt>
+<dd><p>After calling papersInMag() function we get all papers in the     specifical magzine.
+Then we use this function to collect the reader nummer for ervery     papaer in the given paperlist.
+This fuction also return a list of tuple(uuid, title, readnumber).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mendeley</strong> (<em>mendeley_client.MendeleyClient</em>) &#8211; A mendeley client instance</li>
+<li><strong>paperList</strong> (<em>When a str, then this str indicates the file path.     Otherwise is a list object.</em>) &#8211; a List of tuple resulted after papaerInMag()     function&#8217;s calling.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of tuples of     (readers, title, mag, year, uuid, tags)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.taggedInYear">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">taggedInYear</tt><big>(</big><em>mendeley</em>, <em>tag='ontology'</em>, <em>year=2011</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.taggedInYear" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function search all taged by the gaven tag <strong>default</strong>     is ontology.
+Then filter these returned papers if it was publisched in 2011.
+Like all others functions, this one also stores the result locally</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Hier for every categorie we <strong>only collect 5 returned      pages</strong>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>mendeley</strong> (<em>mendeley_client.MendeleyClient</em>) &#8211; A mendeley client instance</li>
+<li><strong>tag</strong> (<em>String</em>) &#8211; The tag, which was tagged a paper</li>
+<li><strong>year</strong> (<em>Integer</em>) &#8211; The specifics year</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A Dict of {catid:(count, catname, catslug)}</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.datadownloader.top20TagsDownload">
+<tt class="descclassname">super_rsl.datadownloader.</tt><tt class="descname">top20TagsDownload</tt><big>(</big><em>mendeley</em>, <em>catid=6</em><big>)</big><a class="headerlink" href="#super_rsl.datadownloader.top20TagsDownload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the top20 tags count for the giving catagory id.
+Then store the result local use the catagorie name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parem mendeley:</th><td class="field-body">A mendeley client instance</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><strong>cat</strong> (<em>Integer</em>) &#8211; The categroie id, <strong>Default is 6</strong></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of tuples, every tuple ist the (tagname, count)     pair.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="super-rsl-compute-module">
+<h2>super_rsl.compute module<a class="headerlink" href="#super-rsl-compute-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-super_rsl.compute"></span><dl class="function">
+<dt id="super_rsl.compute.co_authorsAndYears">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">co_authorsAndYears</tt><big>(</big><em>inputData</em>, <em>author=None</em><big>)</big><a class="headerlink" href="#super_rsl.compute.co_authorsAndYears" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the co-author freq, publications year&#8217;s freq
+from a given data, that a downloaded data
+resulted from datadownloader.py module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputData</strong> (<em>String</em>) &#8211; The .db file name under data folder</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A List of</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.computeFreq">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">computeFreq</tt><big>(</big><em>inputList</em>, <em>resultDict=None</em><big>)</big><a class="headerlink" href="#super_rsl.compute.computeFreq" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to compute normal freq</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resultDict</strong> (<em>Dict</em>) &#8211; A input Dict</li>
+<li><strong>inputList</strong> (<em>A List</em>) &#8211; A input List</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.computeNameFreq">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">computeNameFreq</tt><big>(</big><em>inputList</em>, <em>resultDict=None</em><big>)</big><a class="headerlink" href="#super_rsl.compute.computeNameFreq" title="Permalink to this definition">¶</a></dt>
+<dd><p>A special function to compute authors&#8217; names frequence</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>resultDict</strong> (<em>Dict</em>) &#8211; A input Dict</li>
+<li><strong>inputList</strong> (<em>A List</em>) &#8211; A input List <strong>in form (forename, surname, nameletter)</strong></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.computeTopPopPaperInMag">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">computeTopPopPaperInMag</tt><big>(</big><em>paperList</em>, <em>topn=10</em><big>)</big><a class="headerlink" href="#super_rsl.compute.computeTopPopPaperInMag" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function computes the top n <strong>default n = 10</strong> papers
+in a given paperList, which is the result of calling     datadownloader.popPapersInMag()
+function. 
+It return the top n element as list of tuple of (title, number)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>paperList</strong> (<em>A List</em>) &#8211; A list of tuples, which is a result of     datadownloader.popPapersInMag()</li>
+<li><strong>topn</strong> (<em>Integer</em>) &#8211; A ranking number</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of tuple of (title, readernumber)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.listtodict">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">listtodict</tt><big>(</big><em>inputList</em><big>)</big><a class="headerlink" href="#super_rsl.compute.listtodict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Covert a list to a dict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputList</strong> (<em>A list.</em>) &#8211; A list object of tuple (key,value)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dict of {key, value}</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.makeNamesTuple">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">makeNamesTuple</tt><big>(</big><em>inputList</em><big>)</big><a class="headerlink" href="#super_rsl.compute.makeNamesTuple" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the (forename, surname) tuple for quickly computation</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Due to the confusion in authors&#8217; names, 
+EG: the confusion between         &#8216;Wolfgang G Stock&#8217; and &#8216;Wolfgang G.Stock&#8217;
+Hier we use <strong>re</strong> package to extract the letters in         authors name.
+If all the lettes of two names are the same, then they both         were computed to one author.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputList</strong> (<em>List</em>) &#8211; A list of authors</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a List of tuples of (forename, surname, lettersofname)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.makesureCoauthor">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">makesureCoauthor</tt><big>(</big><em>authorname</em>, <em>authorList</em><big>)</big><a class="headerlink" href="#super_rsl.compute.makesureCoauthor" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to make sure that the computed co-authors are
+true co-authors of a given author.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>authorname</strong> (<em>A String</em>) &#8211; A given author name</li>
+<li><strong>authorList</strong> (<em>A List of string</em>) &#8211; A list of authors <strong>nameletter</strong></li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">True if ok, otherwise False</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.compute.sortDict">
+<tt class="descclassname">super_rsl.compute.</tt><tt class="descname">sortDict</tt><big>(</big><em>inputDict</em>, <em>rank=None</em>, <em>n=1</em><big>)</big><a class="headerlink" href="#super_rsl.compute.sortDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the inputDict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputDict</strong> (<em>dict</em>) &#8211; the Dict to sort</li>
+<li><strong>rank</strong> (<em>Int</em>) &#8211; A number to indicate how many items will be ranked</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OrderedDict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="super-rsl-diagramm-module">
+<h2>super_rsl.diagramm module<a class="headerlink" href="#super-rsl-diagramm-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-super_rsl.diagramm"></span><dl class="function">
+<dt id="super_rsl.diagramm.makeBarPlot">
+<tt class="descclassname">super_rsl.diagramm.</tt><tt class="descname">makeBarPlot</tt><big>(</big><em>inputDict</em>, <em>filename</em>, <em>rank=10</em>, <em>title=None</em>, <em>ylabel='Count'</em>, <em>output='image/'</em>, <em>fsize=(15</em>, <em>20</em>, <em>5</em>, <em>2)</em><big>)</big><a class="headerlink" href="#super_rsl.diagramm.makeBarPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the bar diagramm of the input dict.
+After the call of computation module&#8217;s functions,     we have a inputDict as a result.
+This function uses this result to make a diagramm (plot)     then store the plot locally.
+..Note: If the rank parameter is None, then output all data ranking.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputDict</strong> (<em>Dict, the key is String, the value is interger</em>) &#8211; A dict of (key:value) paire.</li>
+<li><strong>rank</strong> (<em>Integer</em>) &#8211; Indicate the top N (ranking), <strong>default</strong> is None</li>
+<li><strong>output</strong> (<em>String</em>) &#8211; The folder path where our plot diagramms were stored, <strong>default</strong> is the image folder.</li>
+<li><strong>fsize</strong> (<em>A tuple of (width, length, xlimmax, xlimmin)</em>) &#8211; The picture size</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="super_rsl.diagramm.makeLineBar">
+<tt class="descclassname">super_rsl.diagramm.</tt><tt class="descname">makeLineBar</tt><big>(</big><em>inputDict</em>, <em>filename</em>, <em>title</em>, <em>xlabel</em>, <em>output='image/'</em>, <em>fsize=(15</em>, <em>20</em>, <em>5</em>, <em>2)</em><big>)</big><a class="headerlink" href="#super_rsl.diagramm.makeLineBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to make a line bar plot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputDict</strong> (<em>A Dict</em>) &#8211; A inputData of {str:integer}</li>
+<li><strong>filename</strong> (<em>String</em>) &#8211; The output picture&#8217;s name.</li>
+<li><strong>title</strong> (<em>String</em>) &#8211; The title at top of this picture</li>
+<li><strong>xlabel</strong> (<em>String</em>) &#8211; A short sentence at bottom of this pic.</li>
+<li><strong>output</strong> (<em>String</em>) &#8211; The folder path where our plot diagramms were     stored, <strong>default</strong> is the image folder.</li>
+<li><strong>fsize</strong> (<em>A List of [width, length, xlimmax, xlimmin]</em>) &#8211; The picture size</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation for the Code</a><ul>
+<li><a class="reference internal" href="#super-rsl-test-module">super_rsl.test module</a></li>
+<li><a class="reference internal" href="#super-rsl-datadownloader-module">super_rsl.datadownloader module</a></li>
+<li><a class="reference internal" href="#super-rsl-compute-module">super_rsl.compute module</a></li>
+<li><a class="reference internal" href="#super-rsl-diagramm-module">super_rsl.diagramm module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="auswertung.html"
+                        title="previous chapter">Auswertung</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/code.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="auswertung.html" title="Auswertung"
+             >previous</a> |</li>
+        <li><a href="index.html">Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Yuankun LUO, Mathias Sabbagh, Wilhelm Reinhardt.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

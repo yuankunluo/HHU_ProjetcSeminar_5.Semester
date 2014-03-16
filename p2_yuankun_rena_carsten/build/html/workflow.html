@@ -1,0 +1,223 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What can our programm do? (Programm workflow) &mdash; hhu_larrybird_lol 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="hhu_larrybird_lol 0.1 documentation" href="index.html" />
+    <link rel="next" title="Was ist ein API und wozu ist das gut?" href="api.html" />
+    <link rel="prev" title="Intruction for this project" href="intruction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Was ist ein API und wozu ist das gut?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intruction.html" title="Intruction for this project"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">hhu_larrybird_lol 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="what-can-our-programm-do-programm-workflow">
+<h1>What can our programm do? (Programm workflow)<a class="headerlink" href="#what-can-our-programm-do-programm-workflow" title="Permalink to this headline">¶</a></h1>
+<p>&#64;Yuankun</p>
+<p>This programm starts with module <strong>*main.py*</strong>, all modules are in the package larrybird.</p>
+<div class="section" id="start">
+<h2>Start<a class="headerlink" href="#start" title="Permalink to this headline">¶</a></h2>
+<p>main.start() function is the door of our project. It asks user to input a twitter (screenname).
+After get the input twitter account, this programm automatcially downloads all tweets of this user,
+stores this raw_data in disk. Then extracting all usefull data we need. At last, it generates 5 Diagramms for this account.</p>
+<p>start() function are listed in blow:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">start</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;To start the programm.</span>
+
+<span class="sd">        :param None: No parameter asked</span>
+<span class="sd">        :type None: None type</span>
+<span class="sd">        :returns: None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">api</span> <span class="o">=</span> <span class="n">twitterOauth</span><span class="o">.</span><span class="n">getApi</span><span class="p">()</span>
+        <span class="n">twitterAccount</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Please give the account of twitter (screenname) &quot;</span><span class="p">)</span>
+        <span class="n">getalltweets</span><span class="o">.</span><span class="n">getAllTweets</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">twitterAccount</span><span class="p">)</span>
+        <span class="n">inputData</span> <span class="o">=</span> <span class="n">twitterAccount</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">computation</span><span class="o">.</span><span class="n">computeAll</span><span class="p">(</span><span class="s">&quot;data/&quot;</span><span class="o">+</span> <span class="n">inputData</span> <span class="o">+</span> <span class="s">&quot;.db&quot;</span><span class="p">)</span>
+        <span class="n">makePicture</span><span class="o">.</span><span class="n">makeAllPicture</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-tweets">
+<h2>Get Tweets<a class="headerlink" href="#get-tweets" title="Permalink to this headline">¶</a></h2>
+<p>As you can see, if first call the getApt() function in twitterOauth.py module.
+After calling that, the api instance was returned. The api is like a key to the door of twitter,
+but with our Oauthority this key was paged with our application&#8217;s tokens.</p>
+</div>
+<div class="section" id="store-data">
+<h2>Store data<a class="headerlink" href="#store-data" title="Permalink to this headline">¶</a></h2>
+<p>Then the programm asks user to input the twitter so it can collection tweets.
+This step calls the <strong>*getAllTweets()*</strong> function in getalltweets.py module.
+This function use the api and the inputed account to download all statuses of this twitter.
+It stores this raw data in /data directory with filename suffix _raw.db</p>
+</div>
+<div class="section" id="clean-data">
+<h2>CLean data<a class="headerlink" href="#clean-data" title="Permalink to this headline">¶</a></h2>
+<p>In getalltweets.py module, after downloading we call a function <strong>*extractUsefulInfo(alltweets)*</strong> to
+extract for us meaningful data. For this little project, they are:</p>
+<blockquote>
+<div><ul class="simple">
+<li>status (as String) &#8211;&gt; for words statistic</li>
+<li>created_at (as data.time object) &#8211;&gt; for time analyse</li>
+<li>hashtags (as list of string) &#8211;&gt; for hashingtags ranking</li>
+<li>source (as list of string) &#8211;&gt; for client analyse</li>
+</ul>
+</div></blockquote>
+<p>These meaningful data will be stored also in /data folder with filename suffix .db</p>
+</div>
+<div class="section" id="computation">
+<h2>Computation<a class="headerlink" href="#computation" title="Permalink to this headline">¶</a></h2>
+<p>After cleaning data, this programm comes to <strong>*computation.py*</strong> module.
+This module is maybe the most difficlut part for us. Really, why do you aks so many from us?
+For God sake!</p>
+<p>The complex part is in words statistic. Hier we try to use <strong>*NLTK*</strong> package.
+NLTK is a very powerful NLP package, we just use two little tools from it.</p>
+<blockquote>
+<div><ul class="simple">
+<li>reRextokenizer: use this to split the tweets sentenc into words, this dose better as simply use str.split(&#8221; &#8221;)</li>
+<li>stopWorsSet: we retrieve a set of english stopwords to refine our computation</li>
+</ul>
+</div></blockquote>
+<p>Our members has problem with the data.time object. So for this part, we dont use that package.</p>
+<p>The result will be stored in /data foldre with filename suffix _result.db</p>
+</div>
+<div class="section" id="mathplotlib-plot">
+<h2>Mathplotlib Plot<a class="headerlink" href="#mathplotlib-plot" title="Permalink to this headline">¶</a></h2>
+<p>All ploting things was written in this <strong>*makePicture,py*</strong> module.</p>
+<p>The last step&#8217;s result ist a dict object, like {&#8216;xxx_freqOfxxx&#8217;: {xxx:xxx}}.
+For detail please read code documentation.</p>
+<p>There are three main functions in this module:</p>
+<blockquote>
+<div><ul class="simple">
+<li>sortDict &#8211;&gt; just for sorting Dict with <strong>*OrderedDict*</strong> datatype, because python dict can not be sorted.</li>
+<li>makeBar &#8211;&gt; plot a bar diagramm for one result, such like a bar for wordsfrequence of Lady GAGA.</li>
+<li>makeCompBar &#8211;&gt; plot a bar diagramm with two bars in it, to show the diffrerece of two twitter account.</li>
+</ul>
+</div></blockquote>
+<p>Then we have in this module also some shortcut function, so that we can ust input result from last step automatically generate all plot and store them in /image folder.</p>
+</div>
+<div class="section" id="over">
+<h2>Over<a class="headerlink" href="#over" title="Permalink to this headline">¶</a></h2>
+<p>That&#8217;s all.</p>
+<p>I hope next time, we have less work.
+Please. The weise man make other man&#8217;s life easy!</p>
+<p>Team of Y,R,C</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">What can our programm do? (Programm workflow)</a><ul>
+<li><a class="reference internal" href="#start">Start</a></li>
+<li><a class="reference internal" href="#get-tweets">Get Tweets</a></li>
+<li><a class="reference internal" href="#store-data">Store data</a></li>
+<li><a class="reference internal" href="#clean-data">CLean data</a></li>
+<li><a class="reference internal" href="#computation">Computation</a></li>
+<li><a class="reference internal" href="#mathplotlib-plot">Mathplotlib Plot</a></li>
+<li><a class="reference internal" href="#over">Over</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intruction.html"
+                        title="previous chapter">Intruction for this project</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="api.html"
+                        title="next chapter">Was ist ein API und wozu ist das gut?</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/workflow.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="api.html" title="Was ist ein API und wozu ist das gut?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intruction.html" title="Intruction for this project"
+             >previous</a> |</li>
+        <li><a href="index.html">hhu_larrybird_lol 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, YkL, Rena, Carsten.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

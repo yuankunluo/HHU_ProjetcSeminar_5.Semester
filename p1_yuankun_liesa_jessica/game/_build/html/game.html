@@ -1,0 +1,208 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>game documentation &mdash; Hangman 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Hangman 1.0.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Hangman 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-game">
+<span id="game-documentation"></span><h1>game documentation<a class="headerlink" href="#module-game" title="Permalink to this headline">¶</a></h1>
+<p>Created on Sun Oct 27 12:37:59 2013</p>
+<dl class="function">
+<dt id="game.askForOneMoreTime">
+<tt class="descclassname">game.</tt><tt class="descname">askForOneMoreTime</tt><big>(</big><em>n</em>, <em>wordsList</em><big>)</big><a class="headerlink" href="#game.askForOneMoreTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>if the user guessed right</p>
+<p>the user guessed worng and after waiting 2 sec.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="game.askLetter">
+<tt class="descclassname">game.</tt><tt class="descname">askLetter</tt><big>(</big><big>)</big><a class="headerlink" href="#game.askLetter" title="Permalink to this definition">¶</a></dt>
+<dd><ul class="simple">
+<li>save in variable &#8220;inputLetter&#8221;</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="game.askToStart">
+<tt class="descclassname">game.</tt><tt class="descname">askToStart</tt><big>(</big><big>)</big><a class="headerlink" href="#game.askToStart" title="Permalink to this definition">¶</a></dt>
+<dd><p>simple function to ask to start the game</p>
+<ul>
+<li><p class="first">variable &#8220;start&#8221;</p>
+</li>
+<li><dl class="first docutils">
+<dt>exit() is a python build-in function</dt>
+<dd><ul class="first last simple">
+<li>is going to exit python</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>-if &#8220;true&#8221; the game will start and return to <strong>startGame</strong></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="game.clear">
+<tt class="descclassname">game.</tt><tt class="descname">clear</tt><big>(</big><big>)</big><a class="headerlink" href="#game.clear" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="game.guess">
+<tt class="descclassname">game.</tt><tt class="descname">guess</tt><big>(</big><em>wordsList</em>, <em>targetWord</em><big>)</big><a class="headerlink" href="#game.guess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="game.intialGame">
+<tt class="descclassname">game.</tt><tt class="descname">intialGame</tt><big>(</big><big>)</big><a class="headerlink" href="#game.intialGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>main function</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="game.makeTui">
+<tt class="descclassname">game.</tt><tt class="descname">makeTui</tt><big>(</big><em>targetWord</em>, <em>bingoTime</em>, <em>returnWord</em>, <em>retryTime</em>, <em>history</em>, <em>showAnswer</em><big>)</big><a class="headerlink" href="#game.makeTui" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="game.makeWordsList">
+<tt class="descclassname">game.</tt><tt class="descname">makeWordsList</tt><big>(</big><em>fileurl='http://www.gutenberg.org/cache/epub/11/pg11.txt'</em>, <em>language='english'</em>, <em>minLength=3</em><big>)</big><a class="headerlink" href="#game.makeWordsList" title="Permalink to this definition">¶</a></dt>
+<dd><ul>
+<li><p class="first">this function creates a wordlist for the game</p>
+</li>
+<li><dl class="first docutils">
+<dt>it accepts 3 arguments:</dt>
+<dd><ul class="first last simple">
+<li>a URL and a default file (alice in wonderland)</li>
+<li>language</li>
+<li>min length</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<dl class="docutils">
+<dt>it s improtant to use the &#8220;try and except-module&#8221; because not every computer can read nltk</dt>
+<dd><ul class="first last simple">
+<li>without using nltk it could be difficult to get a &#8220;clean&#8221; list</li>
+</ul>
+</dd>
+</dl>
+<ul class="simple">
+<li>the language argument is just a default argument, in fact we could import every language</li>
+<li>create a stopwordlist</li>
+<li>save the &#8220;results&#8221; in stopwords</li>
+<li>regexpTookenizer to get a &#8220;clean&#8221;amount of words</li>
+<li>after import the programm reads a file (input.txt)</li>
+</ul>
+<ul>
+<li><p class="first">filter with arguments</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>min length</li>
+<li>save in the variable &#8220;results&#8221; to create the dadabase for the words</li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="function">
+<dt id="game.pickTarget">
+<tt class="descclassname">game.</tt><tt class="descname">pickTarget</tt><big>(</big><em>wordsList</em><big>)</big><a class="headerlink" href="#game.pickTarget" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="game.startGame">
+<tt class="descclassname">game.</tt><tt class="descname">startGame</tt><big>(</big><em>wordsList</em><big>)</big><a class="headerlink" href="#game.startGame" title="Permalink to this definition">¶</a></dt>
+<dd><p>a function with the created wordlist as it s argument</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/game.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Hangman 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Yuankun, Jessica, Liesa.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

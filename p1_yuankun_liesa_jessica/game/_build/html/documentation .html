@@ -1,0 +1,279 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation &mdash; Hangman 1.0.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Hangman 1.0.0 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Hangman 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documentation">
+<h1>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module">
+<h2>Module<a class="headerlink" href="#module" title="Permalink to this headline">¶</a></h2>
+<p>Interbuild modules in python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">re</span>
+<span class="sd">&quot;&quot;&quot;regular expression&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="sd">&quot;&quot;&quot;create random number&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="sd">&quot;&quot;&quot;for the text&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="sd">&quot;&quot;&quot;to clean the screen&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="sd">&quot;&quot;&quot;timemodule&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Main function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">initialGame</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;configurates the game&quot;&quot;&quot;</span>
+        <span class="n">wordsList</span> <span class="o">=</span> <span class="n">makeWordsList</span><span class="p">()</span>
+        <span class="c">#print(wordsList[:10])</span>
+<span class="k">if</span> <span class="n">askTOStart</span><span class="p">():</span>
+                <span class="n">startGame</span><span class="p">(</span><span class="n">wordsList</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>WordsList:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">makeWordsList</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;wordlist accepts 3 arguments, the Url, the language, and the minimum length&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;important to use try-except, becuase of the nltk-module&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;language argument is a default argument&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;creates a stopwordlist&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;regexpTookenizer to get a clean amount of words&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+                <span class="kn">import</span> <span class="nn">nltk</span>
+                <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">RegexpTokenizer</span>
+                <span class="n">stopWords</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">corpus</span><span class="o">.</span><span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span> <span class="n">language</span> <span class="p">))</span>
+                <span class="n">f</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">fileurl</span><span class="p">)</span>
+                <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">RegexpTokenizer</span><span class="p">(</span><span class="s">r&#39;\w+&#39;</span><span class="p">)</span>
+                <span class="n">cleanWords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">tokenize</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()))</span><span class="o">-</span> <span class="n">stopWords</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ImportError</span> <span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;Error importing nltk, initial game from default txt.&quot;</span><span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;input.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">txt</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                        <span class="n">cleanWords</span> <span class="o">=</span> <span class="n">txt</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cleanWords</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">minLength</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+<p>Start:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">startGame</span><span class="p">(</span><span class="n">wordsList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;has got the WordsList as its argument&quot;&quot;&quot;</span>
+        <span class="n">targetWord</span> <span class="o">=</span> <span class="n">pickTarget</span><span class="p">(</span><span class="n">wordsList</span><span class="p">)</span>
+        <span class="c">#print(targetWord)</span>
+        <span class="n">guess</span><span class="p">(</span><span class="n">wordsList</span><span class="p">,</span> <span class="n">targetWord</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Target:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">pickTarget</span><span class="p">(</span><span class="n">wordsList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;chooses a random word from the generated WordsList&quot;&quot;&quot;</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">wordsList</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">wordsList</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">word</span>
+</pre></div>
+</div>
+<p>Guessing:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">guess</span><span class="p">(</span><span class="n">wordsList</span><span class="p">,</span> <span class="n">targetWord</span><span class="p">):</span>
+        <span class="n">targetWord</span> <span class="o">=</span> <span class="n">targetWord</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">targetWord</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">targetWord</span><span class="p">)</span>
+        <span class="n">returnWord</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;*&#39;</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">targetWord</span><span class="p">]</span>
+        <span class="n">bingoTime</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">retryTime</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">showAnswer</span> <span class="o">=</span> <span class="bp">True</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+                <span class="n">clear</span><span class="p">()</span>
+                <span class="n">makeTui</span><span class="p">(</span><span class="n">targetWord</span><span class="p">,</span><span class="n">bingoTime</span><span class="p">,</span> <span class="n">returnWord</span><span class="p">,</span> <span class="n">retryTime</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">showAnswer</span><span class="p">)</span>
+                <span class="n">inputLetter</span> <span class="o">=</span> <span class="n">askLetter</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">inputLetter</span> <span class="o">==</span> <span class="s">&quot;222&quot;</span><span class="p">:</span>
+                                <span class="n">showAnswer</span> <span class="o">=</span> <span class="bp">True</span>
+                                <span class="n">makeTui</span><span class="p">(</span><span class="n">targetWord</span><span class="p">,</span><span class="n">bingoTime</span><span class="p">,</span> <span class="n">returnWord</span><span class="p">,</span> <span class="n">retryTime</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">showAnswer</span><span class="p">)</span>
+                                <span class="n">askForOneMoreTime</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">wordsList</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">targetWord</span><span class="p">)):</span>
+                        <span class="k">if</span> <span class="n">inputLetter</span> <span class="o">==</span> <span class="n">targetWord</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                                <span class="n">returnWord</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputLetter</span>
+                <span class="c">#print(returnWord)</span>
+                <span class="k">if</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">returnWord</span><span class="p">)</span> <span class="o">!=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">targetWord</span><span class="p">):</span>
+                        <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inputLetter</span><span class="p">)</span>
+                        <span class="n">retryTime</span> <span class="o">-=</span> <span class="mi">1</span>
+                        <span class="k">if</span> <span class="n">retryTime</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                                <span class="n">askForOneMoreTime</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">wordsList</span><span class="p">)</span>
+                <span class="k">if</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">returnWord</span><span class="p">)</span> <span class="o">==</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">targetWord</span><span class="p">):</span>
+                        <span class="n">askForOneMoreTime</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">wordsList</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Tui:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">makeTui</span><span class="p">(</span><span class="n">targetWord</span><span class="p">,</span> <span class="n">bingoTime</span><span class="p">,</span> <span class="n">returnWord</span><span class="p">,</span> <span class="n">retryTime</span><span class="p">,</span> <span class="n">history</span><span class="p">,</span> <span class="n">showAnswer</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;text user interface, for a simple output&quot;&quot;&quot;</span>
+        <span class="n">info</span> <span class="o">=</span> <span class="s">&quot;{t}</span><span class="se">\n</span><span class="s">&quot;</span>
+        <span class="c">#info += &quot;Hier ist your No. {bingoTime} word to guess: {s}&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">&quot;</span><span class="se">\t</span><span class="s"> [ {returnWord} ]</span><span class="se">\t</span><span class="s">{s}&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">&quot;Your have {Time} chance to try. {s}&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">&quot;Your history: [ {history} ] . {s}&quot;</span>
+        <span class="k">if</span> <span class="n">showAnswer</span><span class="p">:</span>
+                <span class="n">info</span> <span class="o">+=</span> <span class="s">&quot;The answer is [ {answer} ]. {s}&quot;</span>
+        <span class="n">info</span> <span class="o">+=</span> <span class="s">&quot;{t}</span><span class="se">\n</span><span class="s">&quot;</span>
+
+        <span class="k">print</span><span class="p">(</span><span class="n">info</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">,</span><span class="n">t</span><span class="o">=</span><span class="s">&#39;-&#39;</span><span class="o">*</span><span class="mi">50</span><span class="p">,</span>
+                                                <span class="n">returnWord</span> <span class="o">=</span> <span class="s">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">returnWord</span><span class="p">),</span>
+                                                <span class="c">#bingoTime = number + 1,Time = retryTime,</span>
+                                                <span class="n">answer</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">targetWord</span><span class="p">),</span>
+                                                <span class="n">history</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">history</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>AskLetter:</p>
+<div class="highlight-python"><pre>def askLetter():
+        """saves the input in the variable "inputLetter""""
+        print("Enter [888] to exit game;[222] to showAnswer")
+        inputLetter = raw_input("Please give a letter: ")
+        if inputLetter == "888":
+                exit()
+        if inputLetter == "222":
+                return "222"
+        while not re.match("^[a-z]$", inputLetter):
+                print("Error! Only one letters from a-z allowed!\n")
+                inputLetter = askLetter()
+        return inputLetter</pre>
+</div>
+<p>Ask to start:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">askToStart</span><span class="p">():</span>
+        <span class="sd">&quot;&quot;&quot;variable=start&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;exit()is a python build-in function which is going to quit python&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;if true= the game will start and return to startGame&quot;&quot;&quot;</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;Welcome to our game!&quot;</span><span class="p">)</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Please press anykey to start game,</span><span class="se">\n</span><span class="s">or input [exit] to quit: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">start</span><span class="o">.</span><span class="n">lower</span> <span class="o">==</span> <span class="s">&quot;exit&quot;</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;F**k, why dont you cantinue! I HATE YOU! TMF&quot;</span><span class="p">)</span>
+                <span class="nb">exit</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">start</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="bp">True</span>
+</pre></div>
+</div>
+<p>Time:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">askForOneMoreTime</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wordsList</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;1. if-loop: if the user guessed right&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;2. if-loop: if the user guessed wrong and the user has to wait 2 sec. to start over with a new word&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;Yeah! You guess right!&quot;</span><span class="p">)</span>
+                <span class="n">oneMoreTime</span> <span class="o">=</span> <span class="nb">raw_input</span><span class="p">(</span><span class="s">&quot;Exit? Enter [Y] to exit or [N] to retry one more time: &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">oneMoreTime</span> <span class="ow">in</span> <span class="p">[</span><span class="s">&#39;y&#39;</span><span class="p">,</span><span class="s">&#39;n&#39;</span><span class="p">]:</span>
+                        <span class="k">if</span> <span class="n">oneMoreTime</span> <span class="o">==</span> <span class="s">&#39;y&#39;</span><span class="p">:</span>
+                                <span class="nb">exit</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">oneMoreTime</span> <span class="o">==</span> <span class="s">&#39;n&#39;</span><span class="p">:</span>
+                                <span class="n">askForOneMoreTime</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">wordsList</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">print</span><span class="p">(</span><span class="s">&quot;Now wait for 2 secends skip to next word&quot;</span><span class="p">)</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+                <span class="n">startGame</span><span class="p">(</span><span class="n">wordsList</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Clear:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">clear</span><span class="p">():</span>
+        <span class="kn">import</span> <span class="nn">os</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&#39;cls&#39;</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">name</span><span class="o">==</span><span class="s">&#39;nt&#39;</span> <span class="k">else</span> <span class="s">&#39;clear&#39;</span><span class="p">)</span>
+
+
+<span class="n">intialGame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation</a><ul>
+<li><a class="reference internal" href="#module">Module</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/documentation .txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">Hangman 1.0.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Yuankun, Jessica, Liesa.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

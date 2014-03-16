@@ -1,0 +1,6 @@
+source/crawler*.rst
+source/crawler_2.rst
+source/ammy/data/datail/raw
+
+*.db
+build

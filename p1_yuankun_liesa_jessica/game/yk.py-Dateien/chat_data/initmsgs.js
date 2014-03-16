@@ -1,0 +1,1 @@
+_GC_InitMsgs=['[\42me\42,\0423j9om08k2i0fa@id.talk.google.com\42,1]\n','[\42pi\42,0,1,1,0,1,0]\n','[\42nt\42,[]\n]\n'];

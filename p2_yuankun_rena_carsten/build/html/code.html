@@ -1,0 +1,492 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentation for the Code &mdash; hhu_larrybird_lol 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="hhu_larrybird_lol 0.1 documentation" href="index.html" />
+    <link rel="prev" title="Diagramms Overview" href="diagramm.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diagramm.html" title="Diagramms Overview"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">hhu_larrybird_lol 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documentation-for-the-code">
+<h1>Documentation for the Code<a class="headerlink" href="#documentation-for-the-code" title="Permalink to this headline">¶</a></h1>
+<p>All the source code are in the larrybird package.</p>
+<span class="target" id="module-larrybird"></span><div class="section" id="module-larrybird.main">
+<span id="larrybird-main-py"></span><h2>larrybird.main.py<a class="headerlink" href="#module-larrybird.main" title="Permalink to this headline">¶</a></h2>
+<p>The main module to start this project.
+Created on Wed Nov  6 19:57:49 2013</p>
+<div class="section" id="the-workflow-of-this-programm">
+<h3>The workflow of this programm<a class="headerlink" href="#the-workflow-of-this-programm" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li>ask the twitter name (screen)</li>
+<li>download the raw twitter data from twitter.com</li>
+<li>extract our useful data fro raw _data</li>
+<li>store this two data locally. (raw_data and clean data)</li>
+<li>compute the frequence</li>
+<li>store this compute result data locally (xxx_result.db)</li>
+<li>use the result data to make pictures</li>
+</ol>
+</div></blockquote>
+<dl class="function">
+<dt id="larrybird.main.start">
+<tt class="descclassname">larrybird.main.</tt><tt class="descname">start</tt><big>(</big><big>)</big><a class="headerlink" href="#larrybird.main.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>To start the programm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>None</strong> (<em>None type</em>) &#8211; No parameter asked</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-larrybird.twitterOauth">
+<span id="larrybird-twitteroauth-py"></span><h2>larrybird.twitterOauth.py<a class="headerlink" href="#module-larrybird.twitterOauth" title="Permalink to this headline">¶</a></h2>
+<p>We use the module to store all import credential for twitter Oauth.</p>
+<p>Created on Wed Nov  6 19:57:39 2013</p>
+<dl class="function">
+<dt id="larrybird.twitterOauth.getApi">
+<tt class="descclassname">larrybird.twitterOauth.</tt><tt class="descname">getApi</tt><big>(</big><big>)</big><a class="headerlink" href="#larrybird.twitterOauth.getApi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use tweepy to handle the creepy but lovly twitter Oauth system,
+then return a api instance to continue our work.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> (<em>None.</em>) &#8211; No param.</li>
+<li><strong>state</strong> &#8211; None.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">tweppy.Api instance</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-larrybird.getalltweets">
+<span id="larrybird-getalltweets-py"></span><h2>larrybird.getalltweets.py<a class="headerlink" href="#module-larrybird.getalltweets" title="Permalink to this headline">¶</a></h2>
+<p>Created on Sat Nov  9 14:56:56 2013</p>
+<dl class="function">
+<dt id="larrybird.getalltweets.extractUsefulInfo">
+<tt class="descclassname">larrybird.getalltweets.</tt><tt class="descname">extractUsefulInfo</tt><big>(</big><em>alltweets</em><big>)</big><a class="headerlink" href="#larrybird.getalltweets.extractUsefulInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extra usefull Information for our project.
+Such like created time, hashtags, source(client), text
+Erery Item hast a tweet_id as key,
+a tuple consists of (text, hashtags, source, created_at)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alltweets</strong> (<em>List</em>) &#8211; a List of all retrievaled tweets</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a List full of usefull infomation as Tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.getalltweets.getAllTweets">
+<tt class="descclassname">larrybird.getalltweets.</tt><tt class="descname">getAllTweets</tt><big>(</big><em>api</em>, <em>screen_name</em><big>)</big><a class="headerlink" href="#larrybird.getalltweets.getAllTweets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all tweets for a given screenname.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>api</strong> (<em>tweepy.API.</em>) &#8211; the api instance of tweepy api class.</li>
+<li><strong>screen_name</strong> (<em>String</em>) &#8211; The screen name of twitter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A List full of  all tweets of this given screenname.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.getalltweets.saveTweets">
+<tt class="descclassname">larrybird.getalltweets.</tt><tt class="descname">saveTweets</tt><big>(</big><em>alltweets</em><big>)</big><a class="headerlink" href="#larrybird.getalltweets.saveTweets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save all given tweets to two local file.
+One is a raw file, that stores the orginal data from api.
+The other one is a refined file for using.
+Both file use the user&#8217;s screen_name als filename.
+Extention is .db.
+Attention: Both files are stored in data directory</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alltweets</strong> (<em>List</em>) &#8211; a List of all retrievaled tweets</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if successful, False if not</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-larrybird.computation">
+<span id="larrybird-computation-py"></span><h2>larrybird.computation.py<a class="headerlink" href="#module-larrybird.computation" title="Permalink to this headline">¶</a></h2>
+<p>We use the module to compute all computational work for our collected data.</p>
+<div class="section" id="what-to-do">
+<h3>What to do<a class="headerlink" href="#what-to-do" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Anzahl je Jahr, Monat, Tag, etc. (Analyse mit Hilfe des datetime-Moduls)</li>
+<li>Menge und Häufigkeit der verwendeten Wörter</li>
+<li>Menge und Häufigkeit der verwendeten Hashtags</li>
+<li>Menge und Häufigkeit der verwendeten Twitter-Clients</li>
+</ol>
+</div></blockquote>
+</div>
+<div class="section" id="how">
+<h3>How<a class="headerlink" href="#how" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>we use tree functions to do this computation, every function use the clean data,</div></blockquote>
+<p>that we collected as input, then output something for matloplib.</p>
+</div>
+<div class="section" id="important">
+<h3>Important:<a class="headerlink" href="#important" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Every output data is in form of dict and stored with pickle in local.</li>
+<li><strong>NLTK</strong> was used to clean stopwords and toknizer sentences.</li>
+</ol>
+</div></blockquote>
+<p>Created on Wed Nov  6 19:57:39 2013</p>
+<dl class="function">
+<dt id="larrybird.computation.computeAll">
+<tt class="descclassname">larrybird.computation.</tt><tt class="descname">computeAll</tt><big>(</big><em>inputData</em><big>)</big><a class="headerlink" href="#larrybird.computation.computeAll" title="Permalink to this definition">¶</a></dt>
+<dd><p>A shorcut to call all functions in this module</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputData</strong> (<em>String</em>) &#8211; The name of the local data.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict of all informations</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.computation.computeFreqOfClient">
+<tt class="descclassname">larrybird.computation.</tt><tt class="descname">computeFreqOfClient</tt><big>(</big><em>inputData</em><big>)</big><a class="headerlink" href="#larrybird.computation.computeFreqOfClient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute die Frequence of Client, eg, iPad, web.
+Then return a dict as putput and store the result dict in a local data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputData</strong> (<em>String</em>) &#8211; The name of the clean data (list objects).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A Dict, whoes key ist the client name and value ist interger.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.computation.computeFreqOfHashtags">
+<tt class="descclassname">larrybird.computation.</tt><tt class="descname">computeFreqOfHashtags</tt><big>(</big><em>inputData</em><big>)</big><a class="headerlink" href="#larrybird.computation.computeFreqOfHashtags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the frequence of hashtags used.
+Then returns a dict as output and stores the result dict in a local data.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputData</strong> (<em>String</em>) &#8211; The name of the clean data (list objects).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict, whose key is the hashtag and value ist integer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.computation.computeFreqOfWords">
+<tt class="descclassname">larrybird.computation.</tt><tt class="descname">computeFreqOfWords</tt><big>(</big><em>inputData</em><big>)</big><a class="headerlink" href="#larrybird.computation.computeFreqOfWords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the frequence of words used.
+Then returns a dict as output and stores the result dict in a local data.
+Try to import <strong>NLTK</strong> package to throw out those stop-word, then we can get more intressting data.   
+And use NLTK to tokenize words, and clean the shorturl or something not import.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not every pc has NLTK, in this function if NLTK was not successful imported,we just compute word frequence over raw inputdata.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputData</strong> (<em>String</em>) &#8211; The name of the clean data (list objects).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dict, whose key is the word and value is integer.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.computation.computeTime">
+<tt class="descclassname">larrybird.computation.</tt><tt class="descname">computeTime</tt><big>(</big><em>inputData</em><big>)</big><a class="headerlink" href="#larrybird.computation.computeTime" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tweets selected by year, month and day.
+Use the cleanded data from the getallweets.py module, this function loads
+the data and compute the frequrence for days, months and years.
+Use tree dicts to store the output with pickle into locale storage for makePicture.py.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inputData</strong> (<em>String</em>) &#8211; The name of the clean data (list objects).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A tuple, whose elements are the dicts of years, months, days.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-larrybird.makePicture">
+<span id="larrybird-makepicture-py"></span><h2>larrybird.makePicture.py<a class="headerlink" href="#module-larrybird.makePicture" title="Permalink to this headline">¶</a></h2>
+<p>Use <strong>matplotlib</strong> to generate pics.</p>
+<dl class="function">
+<dt id="larrybird.makePicture.makeAllCompare">
+<tt class="descclassname">larrybird.makePicture.</tt><tt class="descname">makeAllCompare</tt><big>(</big><em>result1</em>, <em>result2</em><big>)</big><a class="headerlink" href="#larrybird.makePicture.makeAllCompare" title="Permalink to this definition">¶</a></dt>
+<dd><p>A short to make all compare bar diagramms, using the module makePicture.py</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>result1</strong> &#8211; The first result data that stored locally after computation.py processing.</li>
+<li><strong>result2</strong> &#8211; The second result data that stored locally after computation.py processing.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.makePicture.makeAllPicture">
+<tt class="descclassname">larrybird.makePicture.</tt><tt class="descname">makeAllPicture</tt><big>(</big><em>result</em><big>)</big><a class="headerlink" href="#larrybird.makePicture.makeAllPicture" title="Permalink to this definition">¶</a></dt>
+<dd><p>A shortcut to make all bar diaagramms.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>result</strong> (<em>Dict.</em>) &#8211; The result data that stored locally after computation.py processing.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.makePicture.makeBarPlot">
+<tt class="descclassname">larrybird.makePicture.</tt><tt class="descname">makeBarPlot</tt><big>(</big><em>inputDict</em>, <em>filename</em>, <em>rank=10</em>, <em>title=None</em>, <em>ylabel='Count'</em>, <em>output='image/'</em><big>)</big><a class="headerlink" href="#larrybird.makePicture.makeBarPlot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot the bar diagramm of the input dict.
+After call of computation module&#8217;s functions, we have a inputDict als result.
+This function use this result to make diagramm (plot) then store the plot locally.
+..Note: If the rank parameter is None, then output all data ranking.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputDict</strong> (<em>Dict, the key is String, the value is interger</em>) &#8211; A dict of (key:value) paire.</li>
+<li><strong>rank</strong> (<em>Integer</em>) &#8211; Indicate the top N (ranking), <strong>default</strong> is None</li>
+<li><strong>output</strong> (<em>String</em>) &#8211; The folder path where our plot diagramms were stored, <strong>default</strong> is the image folder.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.makePicture.makeCompareBar">
+<tt class="descclassname">larrybird.makePicture.</tt><tt class="descname">makeCompareBar</tt><big>(</big><em>inputDict1</em>, <em>inputDict2</em>, <em>fileName1</em>, <em>fileName2</em>, <em>rank=5</em>, <em>output='image/'</em><big>)</big><a class="headerlink" href="#larrybird.makePicture.makeCompareBar" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function use two InputDict as input parameter, then plot a two bars diagramm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputDict1</strong> (<em>A dict object of items in form of (String,int)</em>) &#8211; The first inputDict.</li>
+<li><strong>inputDict2</strong> (<em>A dict object of items in form of (String,int)</em>) &#8211; The second inputDict.</li>
+<li><strong>fileName1</strong> (<em>String.</em>) &#8211; The name that appears as a part of the title of this diagramm</li>
+<li><strong>fileName2</strong> (<em>String.</em>) &#8211; The name that appears as a part of the title of this diagramm</li>
+<li><strong>rank</strong> &#8211; Indicate how many items will be showed (ranking for top N), <strong>default is 5</strong></li>
+<li><strong>output</strong> (<em>String</em>) &#8211; The directory , where the output png files will be stored locally</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="larrybird.makePicture.sortDict">
+<tt class="descclassname">larrybird.makePicture.</tt><tt class="descname">sortDict</tt><big>(</big><em>inputDict</em>, <em>rank=None</em><big>)</big><a class="headerlink" href="#larrybird.makePicture.sortDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the inputDict.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>inputDict</strong> (<a class="reference external" href="http://docs.python.org/library/stdtypes.html#dict" title="(in Python v2.7)"><em>dict</em></a>) &#8211; the Dict to sort</li>
+<li><strong>rank</strong> (<em>Int</em>) &#8211; A number to indicate how many items will be ranked</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">OrderedDict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Documentation for the Code</a><ul>
+<li><a class="reference internal" href="#module-larrybird.main">larrybird.main.py</a><ul>
+<li><a class="reference internal" href="#the-workflow-of-this-programm">The workflow of this programm</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-larrybird.twitterOauth">larrybird.twitterOauth.py</a></li>
+<li><a class="reference internal" href="#module-larrybird.getalltweets">larrybird.getalltweets.py</a></li>
+<li><a class="reference internal" href="#module-larrybird.computation">larrybird.computation.py</a><ul>
+<li><a class="reference internal" href="#what-to-do">What to do</a></li>
+<li><a class="reference internal" href="#how">How</a></li>
+<li><a class="reference internal" href="#important">Important:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-larrybird.makePicture">larrybird.makePicture.py</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="diagramm.html"
+                        title="previous chapter">Diagramms Overview</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/code.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="diagramm.html" title="Diagramms Overview"
+             >previous</a> |</li>
+        <li><a href="index.html">hhu_larrybird_lol 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, YkL, Rena, Carsten.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

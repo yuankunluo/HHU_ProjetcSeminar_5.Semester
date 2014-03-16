@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>HighLight &mdash; Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation" href="index.html" />
+    <link rel="next" title="Auswertung" href="auswertung.html" />
+    <link rel="prev" title="Aufgabenstellung" href="aufgabenstellung.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="auswertung.html" title="Auswertung"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="aufgabenstellung.html" title="Aufgabenstellung"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="highlight">
+<h1>HighLight<a class="headerlink" href="#highlight" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="makenametuple">
+<h2>makeNameTuple()<a class="headerlink" href="#makenametuple" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>This funktion extracts the letter of a given authorname,
+exp: From &#8220;Wolfgan. G. Stock&#8221; it returns &#8220;wolfgangstock&#8221;.</p>
+<p>We use this letter chain to compare with other authors.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">makeNamesTuple</span><span class="p">(</span><span class="n">inputList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get the (forename, surname) tuple for quickly computation</span>
+
+<span class="sd">    .. warning:: Due to the confusion in authors name,</span>
+<span class="sd">        EG: the confusion between &#39;Wolfgang G Stock&#39; and &#39;Wolfgang G.Stock&#39;</span>
+<span class="sd">        Hier we use **re** package to extract the letters in authors name.</span>
+<span class="sd">        If all the lettes of two names are the same, then they both was computed</span>
+<span class="sd">        to one author.</span>
+
+<span class="sd">    :param inputList: A list of authors</span>
+<span class="sd">    :type inputList: List</span>
+<span class="sd">    :returns:  a List of tuple of (forename, surname, lettersofname)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">nameD</span> <span class="ow">in</span> <span class="n">inputList</span><span class="p">:</span>
+        <span class="n">forename</span> <span class="o">=</span> <span class="n">nameD</span><span class="p">[</span><span class="s">&#39;forename&#39;</span><span class="p">]</span>
+        <span class="n">surename</span> <span class="o">=</span> <span class="n">nameD</span><span class="p">[</span><span class="s">&#39;surname&#39;</span><span class="p">]</span>
+        <span class="n">nameletters</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">forename</span> <span class="o">+</span>  <span class="n">surename</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="n">letterList</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s">r&#39;\w*&#39;</span><span class="p">,</span> <span class="n">nameletters</span><span class="p">)</span>
+        <span class="n">nameletters</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">letterList</span><span class="p">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">forename</span><span class="p">,</span> <span class="n">surename</span><span class="p">,</span><span class="n">nameletters</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="makelinebar">
+<h2>makeLineBar()<a class="headerlink" href="#makelinebar" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>This figure was created by the funkction diagramm.makeLineBar().
+The function gets a tuple as argument fsize.</p>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">makeLineBar</span><span class="p">(</span><span class="n">inputDict</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">xlabel</span> <span class="p">,</span> <span class="n">output</span> <span class="o">=</span> \
+<span class="s">&quot;image/&quot;</span><span class="p">,</span> <span class="n">fsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">)):</span>
+    <span class="sd">&quot;&quot;&quot;A function to make a line bar plot.</span>
+
+<span class="sd">    :param inputDict: A inputData of {str:integer}</span>
+<span class="sd">    :type inputDict: A Dict</span>
+<span class="sd">    :param filename: The output picture&#39;s name.</span>
+<span class="sd">    :type filename: String</span>
+<span class="sd">    :param title: The title at top of this picture</span>
+<span class="sd">    :type title: String</span>
+<span class="sd">    :param xlabel: A short sentence at bottom of this pic.</span>
+<span class="sd">    :type xlabel: String</span>
+<span class="sd">    :param output: The folder path where our plot diagramms \</span>
+<span class="sd">    were stored, **default** is the image folder.</span>
+<span class="sd">    :type output: String</span>
+<span class="sd">    :param fsize: The picture size</span>
+<span class="sd">    :type fsize: A List of [width, length, xlimmax, xlimmin]</span>
+<span class="sd">    :returns: None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">sortDict</span><span class="p">(</span><span class="n">inputDict</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="n">y_keys</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span> <span class="p">]</span>
+    <span class="n">y_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_keys</span><span class="p">))</span>
+    <span class="n">performance</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span> <span class="p">]</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_keys</span><span class="p">))</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">l</span><span class="p">,</span> <span class="n">mi</span><span class="p">,</span> <span class="n">ma</span> <span class="o">=</span> <span class="n">fsize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">fsize</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fsize</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">fsize</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">l</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="n">mi</span><span class="p">,</span><span class="n">ma</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">autoscale</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">performance</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">error</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> \
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">y_keys</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s">&#39;small&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&quot; &quot;</span><span class="p">,</span> <span class="s">&quot;_&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">output</span> <span class="o">+</span> <span class="n">filename</span> <span class="o">+</span> <span class="s">&quot;.png&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HighLight</a><ul>
+<li><a class="reference internal" href="#makenametuple">makeNameTuple()</a></li>
+<li><a class="reference internal" href="#makelinebar">makeLineBar()</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="aufgabenstellung.html"
+                        title="previous chapter">Aufgabenstellung</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="auswertung.html"
+                        title="next chapter">Auswertung</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/highlight.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="auswertung.html" title="Auswertung"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="aufgabenstellung.html" title="Aufgabenstellung"
+             >previous</a> |</li>
+        <li><a href="index.html">Gruppe 1302 P3 Mendeley Super RSL 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Yuankun LUO, Mathias Sabbagh, Wilhelm Reinhardt.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>
